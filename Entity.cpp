@@ -1,9 +1,23 @@
-#include "Entity.h";
+// Entity.cpp
+// 
+#include "Entity.h"
 
 
-Entity::Entity(){}
+Entity::Entity(){
+}
 void Entity::render(Tile* tile){
+
+	// Sets forground color to entity's color
+	// Sets background to tile's background
+	// Renders entity's character
 	cout << fg(f_color) << bg(tile->get_bg()) << c;
+}
+string Entity::r_render(Tile* tile){
+
+	// Sets forground color to entity's color
+	// Sets background to tile's background
+	// Returnes string of colored character
+	return fg(f_color) + bg(tile->get_bg()) + c;
 }
 void Entity::set_char(char c_){
 	c = c_;
@@ -42,34 +56,46 @@ Map* Entity::get_map(){
 	return map;
 }
 void Entity::move_up(){
+
+	// Gets entity's x and y
 	int x = get_x();
 	int y = get_y();
-	Tile* t = get_map()->get_tile_r(x, y - 1);
-	if(!t->get_solid()){
+
+	// Checks if space above is not solid
+	if(!get_map()->check_solid(x, y - 1)){
 		set_y(y - 1);
 	}
 }
 void Entity::move_down(){
+
+	// Gets entity's x and y
 	int x = get_x();
 	int y = get_y();
-	Tile* t = get_map()->get_tile_r(x, y + 1);
-	if(!t->get_solid()){
+
+	// Checks if space below is not solid
+	if(!get_map()->check_solid(x, y + 1)){
 		set_y(y + 1);
 	}
 }
 void Entity::move_left(){
+
+	// Gets entity's x and y
 	int x = get_x();
 	int y = get_y();
-	Tile* t = get_map()->get_tile_r(x - 1, y);
-	if(!t->get_solid()){
+
+	// Checks if space to the left is not solid
+	if(!get_map()->check_solid(x - 1, y)){
 		set_x(x - 1);
 	}
 }
 void Entity::move_right(){
+
+	// Gets entity's x and y
 	int x = get_x();
 	int y = get_y();
-	Tile* t = get_map()->get_tile_r(x + 1, y);
-	if(!t->get_solid()){
+
+	// Checks if space to the right is not solid
+	if(!get_map()->check_solid(x + 1, y)){
 		set_x(x + 1);
 	}
 }

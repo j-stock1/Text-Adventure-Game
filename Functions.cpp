@@ -1,4 +1,3 @@
-using namespace std;
 #include "Functions.h";
 
 void set_color(Color c, bool fg){
@@ -54,4 +53,26 @@ string fg(Color c){
 	s += to_string(c.r) + ';' + to_string(c.g) + ';' + to_string(c.b) + 'm';
 
 	return s;
+}
+
+void display_items(vector<Item> items, string title){
+	string s = "";
+	s += "----" + title + "----\n";
+	for(int i = 0; i < items.size(); i++){
+		s+= to_string(i) + ": ";
+		s+= items[i].get_display();
+		s+= "\n";
+	}
+	print_text(s);
+}
+
+void print_text(string text){
+	for(int i = 1; i < text.length(); i++){
+		sleep(30);
+		cout << text[i];
+	}
+}
+
+void sleep(int milli){
+	this_thread::sleep_for(chrono::milliseconds(milli));
 }

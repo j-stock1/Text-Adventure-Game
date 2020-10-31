@@ -1,9 +1,9 @@
 #pragma once
 using namespace std;
-#include "Functions.h";
-#include "Tile.h";
-#include "Map.h";
-#include "Structures.h";
+#include "Functions.h"
+#include "Tile.h"
+#include "Map.h"
+#include "Structures.h"
 
 class Map;
 
@@ -11,6 +11,7 @@ class Entity{
 public:
 	Entity();
 	void render(Tile* tile);
+	string r_render(Tile* tile);
 	void set_char(char c_);
 	void set_fg(Color color_);
 	void set_bg(Color color_);
@@ -34,5 +35,5 @@ private:
 	int y;
 	Color f_color;
 	Color b_color;
-	Map* map;
+	Map* map = NULL;
 };
