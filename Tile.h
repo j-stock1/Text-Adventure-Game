@@ -1,7 +1,9 @@
 #pragma once
-#include "Structures.h";
-#include "Functions.h";
-#include <iostream>;
+using namespace std;
+#include "Structures.h"
+#include "Functions.h"
+#include <iostream>
+#include <string>
 
 class Tile{
 public:
@@ -14,10 +16,14 @@ public:
 	Color get_bg();
 	void set_solid(bool b);
 	bool get_solid();
+	void set_type(string type);
+	string get_type();
 	void render();
+	string r_render();
 private:
 	char c;
 	Color f_color;
 	Color b_color;
 	bool solid;
+	string type;
 };
