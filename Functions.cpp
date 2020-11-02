@@ -76,3 +76,24 @@ void print_text(string text){
 void sleep(int milli){
 	this_thread::sleep_for(chrono::milliseconds(milli));
 }
+
+void cutscene(string file) {
+	fstream newfile;
+	newfile.open(file, ios::in);
+	string tp;
+	vector<string> frames;
+	while (!newfile.eof()) {
+		getline(newfile, tp);
+		frames.push_back(tp + "\n");
+	}
+	string frame;
+	for (int i = 0; i < int(frames.size()); i++) {
+		if (i % 30 == 0) {
+			cout << frame;
+			frame = "";
+			sleep_for(40ms);
+		}
+		frame += frames[i];
+	}
+	newfile.close();
+}
