@@ -5,6 +5,7 @@ using namespace std;
 #include <vector>
 #include <chrono>
 #include <thread>
+#include <fstream>
 #include "Structures.h"
 #include "Item.h"
 
@@ -20,3 +21,4 @@ string fg(Color c);
 void display_items(vector<Item> items, string title);
 void print_text(string text);
 void sleep(int milli);
+void cutscene(string file);
